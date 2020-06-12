@@ -1,21 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const util = require('util');
+
+const writeFileAsync = util.promisify(fs.writeFile);
 
 
-// JSON writing function
-const writeJSON = data => {
-    let text = JSON.stringify(data, null, 2);
-    fs.writeFile("readme.JSON", text, function(err) {
-       if (err) { 
-        throw Error("something went wrong! + err.message");
-    }
-    console.log("Success");
-    });
-}
-
-// array of questions for user
-inquirer
-    .prompt([
+// function that crats the array of questions for user
+function promptUser() {
+    return inquirer.prompt([
         {
             type: "input",
             message: "What is the name of your Project?",
@@ -66,10 +58,14 @@ inquirer
             message: "What is your email address",
             name: "emailAddress"
         },
-    ])
-    .then(function(answers) {
-        writeJSON(answers);
-    });
+    ]);
+}
+
+// function generateMarkdown(response) {
+//     return `
+    
+//     `
+// }
 
 
 // // function to write README file
