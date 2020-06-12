@@ -40,13 +40,19 @@ function promptUser() {
         },
         {
             type: "checkbox",
-            name: "license",
             message: "Please select a license.",
             choices: [
-                "choice 1",
-                "choice 2",
-                "choice 3"
-            ]  
+                "Apache%202.0",
+                "BSD%203--Clause",
+                "BSD%202--Clause",
+                "Boost%201.1"
+            ],  
+            name: "license"
+        },
+        {
+            type: "input",
+            message: "Whose Credit is this work?",
+            name: "credit"
         },
         {
             type: "input",
@@ -56,26 +62,67 @@ function promptUser() {
         {
             type: "input",
             message: "What is your email address",
-            name: "emailAddress"
+            name: "email"
         },
     ]);
 }
 
-// function generateMarkdown(response) {
-//     return `
+function generateMarkdown(response) {
+    return `
+# ${response.title}
+
+# Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage) 
+- [Contributing](#contributing)
+- [Test](#test)
+- [Credits](#credits)
+- [License](#license) 
+- [Questions](#questions)
+
+## Description:
+    ${response.description}
+## Installation:
+    ${response.installation}
+## Usage:
+    ${response.usage}
+## Contributing:
+    ${response.contribution}
+## Test:
+    ${response.test}
+## Credits:
+    ${response.credit}
+## License:
+
+![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
     
-//     `
-// }
+- [License](https://opensource.org/licenses/${response.license})
 
+## Questions:
+    For questions about the Generator you can go to my 
+    GitHub page at the following Link: 
 
-// // function to write README file
-// function writeToFile(fileName, data) {
-// }
+- [GitHub Profile](https://github.com/${response.username})
 
-// // function to initialize program
-// function init() {
+For additional questions please reach out to my email at: ${response.email}.
+`;
+}
 
-// }
+// function to initialize program
+async function init() {
+    try {
+        const response = await promptUser();
 
-// // function call to initialize program
-// init();
+        const readMe = generateMarkdown(response);
+
+        await writeFileAsync("README.md", readMe);
+        console.log("Success!");
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+// function call to initialize program
+init();
