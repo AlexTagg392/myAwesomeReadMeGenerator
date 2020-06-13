@@ -108,6 +108,10 @@ function generateMarkdown(response) {
 - [GitHub Profile](https://github.com/${response.username})
 
 For additional questions please reach out to my email at: ${response.email}.
+
+    Here is a video on how to work the application.
+- [Video](https://youtu.be/HQAggkj8EWs)
+
 `;
 }
 
