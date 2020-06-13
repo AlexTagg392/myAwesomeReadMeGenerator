@@ -42,10 +42,10 @@ function promptUser() {
             type: "checkbox",
             message: "Please select a license.",
             choices: [
-                "Apache%202.0",
-                "BSD%203--Clause",
-                "BSD%202--Clause",
-                "Boost%201.1"
+                "Apache",
+                "MIT",
+                "ISC",
+                "GNU GPLv3"
             ],  
             name: "license"
         },
@@ -83,6 +83,8 @@ function generateMarkdown(response) {
 - [Questions](#questions)
 
 ## Description:
+![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
+
     ${response.description}
 ## Installation:
     ${response.installation}
@@ -95,8 +97,7 @@ function generateMarkdown(response) {
 ## Credits:
     ${response.credit}
 ## License:
-
-![License](https://img.shields.io/badge/License-${response.license}-blue.svg "License Badge")
+    For more information about the License, click on the link below.
     
 - [License](https://opensource.org/licenses/${response.license})
 

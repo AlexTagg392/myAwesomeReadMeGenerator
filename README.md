@@ -13,6 +13,8 @@
 - [Questions](#questions)
 
 ## Description:
+![License](https://img.shields.io/badge/License-Apache-blue.svg "License Badge")
+
     
 ## Installation:
     
@@ -25,10 +27,9 @@
 ## Credits:
     
 ## License:
-
-![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg "License Badge")
+    For more information about the License, click on the link below.
     
-- [License](https://opensource.org/licenses/BSD%203--Clause)
+- [License](https://opensource.org/licenses/Apache)
 
 ## Questions:
     For questions about the Generator you can go to my 
